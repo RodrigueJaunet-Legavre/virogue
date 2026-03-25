@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Virogue</title>
+  <meta name="description" content="Découvrez les réalisations de Virogue : sites web pour artisans, commerçants et indépendants." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Filtres */
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 36px 0 48px;
+    }
+    .filter-btn {
+      padding: 9px 20px;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-2);
+      transition: var(--transition);
+    }
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* Grille portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .portfolio-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      cursor: default;
+    }
+    .portfolio-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    .portfolio-card.hidden {
+      display: none;
+    }
+    .portfolio-card__visual {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-title);
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .portfolio-card__visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.1);
+    }
+    .portfolio-card__visual-initials {
+      position: relative;
+      z-index: 1;
+      opacity: 0.9;
+      letter-spacing: -0.02em;
+    }
+    .portfolio-card__body {
+      padding: 20px 24px 24px;
+    }
+    .portfolio-card__sector {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(212,106,58,0.08);
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+    .portfolio-card__body h3 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+    .portfolio-card__body p {
+      font-size: 0.87rem;
+      line-height: 1.6;
+    }
+    .portfolio-card__meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-3);
+    }
+
+    /* Témoignages */
+    .testimonials {
+      background: #fff;
+      padding: 80px 0;
+    }
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .testimonial {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid var(--border);
+    }
+    .testimonial__stars {
+      color: var(--accent);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+    .testimonial__text {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .testimonial__author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial__avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .testimonial__info strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .testimonial__info span {
+      font-size: 0.8rem;
+      color: var(--text-3);
+    }
+
+    @media (max-width: 900px) {
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials__grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">Viro<span>gue</span></a>
+        <div class="nav__links" id="navLinks">
+          <a href="index.html">Accueil</a>
+          <a href="portfolio.html" class="active">Portfolio</a>
+          <a href="processus.html">Notre processus</a>
+          <a href="contact.html">Contact</a>
+          <a href="contact.html" class="btn btn--primary">Devis gratuit</a>
+        </div>
+        <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="nav__mobile" id="mobileMenu">
+        <a href="index.html">Accueil</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="processus.html">Notre processus</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="btn btn--primary">Devis gratuit →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero container fade-up">
+    <span class="tag">Nos réalisations</span>
+    <h1>Ce que nous avons créé</h1>
+    <p>Des projets concrets pour des clients qui avaient besoin d'un site pro, rapide et abordable.</p>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <section class="section--sm container">
+    <!-- Filtres -->
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn" data-filter="artisans">Artisans</button>
+      <button class="filter-btn" data-filter="commerce">Commerce</button>
+      <button class="filter-btn" data-filter="services">Services</button>
+      <button class="filter-btn" data-filter="restauration">Restauration</button>
+      <button class="filter-btn" data-filter="app-web">Application Web</button>
+    </div>
+
+    <!-- Grille -->
+    <div class="portfolio-grid" id="portfolioGrid">
+
+      <div class="portfolio-card fade-up" data-sector="app-web">
+        <div class="portfolio-card__visual" style="background-image: url('images/fairplay.jpg'); background-size: cover; background-position: top center;">
+        </div>
+        <div class="portfolio-card__body">
+          <span class="portfolio-card__sector">Application Web</span>
+          <h3>FairPlay</h3>
+          <p>Plateforme web de comparaison d'outils IA. Référence 200+ outils classés par catégories et métiers, avec moteur de recherche intégré.</p>
+          <div class="portfolio-card__meta">
+            <span>Application Web</span>
+            <a href="https://fairplay-indol.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="font-size:0.78rem;padding:6px 14px;">Voir le site →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up fade-up--delay-1" data-sector="artisans">
+        <div class="portfolio-card__visual" style="background: linear-gradient(135deg, #7C5C3A, #A07850);">
+          <span class="portfolio-card__visual-initials">PD</span>
+        </div>
+        <div class="portfolio-card__body">
+          <span class="portfolio-card__sector">Artisans</span>
+          <h3>Plombier Dumont</h3>
+          <p>Site vitrine pour un plombier chauffagiste avec formulaire de demande d'intervention, zones desservies et avis clients.</p>
+          <div class="portfolio-card__meta">
+            <span>Site vitrine</span>
+            <span>490 € HT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up fade-up--delay-1" data-sector="restauration">
+        <div class="portfolio-card__visual" style="background: linear-gradient(135deg, #C0392B, #E74C3C);">
+          <span class="portfolio-card__visual-initials">BL</span>
+        </div>
+        <div class="portfolio-card__body">
+          <span class="portfolio-card__sector">Restauration</span>
+          <h3>Boulangerie Lebrun</h3>
+          <p>Site avec galerie de produits, horaires et carte interactive. Design chaud et artisanal, optimisé Google My Business.</p>
+          <div class="portfolio-card__meta">
+            <span>Site vitrine</span>
+            <span>490 € HT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up fade-up--delay-2" data-sector="services">
+        <div class="portfolio-card__visual" style="background: linear-gradient(135deg, #2C3E7A, #3D5FA0);">
+          <span class="portfolio-card__visual-initials">CV</span>
+        </div>
+        <div class="portfolio-card__body">
+          <span class="portfolio-card__sector">Services</span>
+          <h3>Cabinet Conseil Vega</h3>
+          <p>Site institutionnel pour un cabinet de conseil RH. Design sobre et professionnel, formulaire de prise de rendez-vous.</p>
+          <div class="portfolio-card__meta">
+            <span>Site vitrine</span>
+            <span>590 € HT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up" data-sector="commerce">
+        <div class="portfolio-card__visual" style="background: linear-gradient(135deg, #1A7A52, #28A870);">
+          <span class="portfolio-card__visual-initials">BV</span>
+        </div>
+        <div class="portfolio-card__body">
+          <span class="portfolio-card__sector">Commerce</span>
+          <h3>Boutique Végétal</h3>
+          <p>E-commerce pour une boutique de plantes d'intérieur. Catalogue produits, paiement en ligne, livraison et click &amp; collect.</p>
+          <div class="portfolio-card__meta">
+            <span>E-commerce</span>
+            <span>890 € HT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up fade-up--delay-1" data-sector="artisans">
+        <div class="portfolio-card__visual" style="background: linear-gradient(135deg, #5A3A7A, #7B5EA8);">
+          <span class="portfolio-card__visual-initials">EM</span>
+        </div>
+        <div class="portfolio-card__body">
+          <span class="portfolio-card__sector">Artisans</span>
+          <h3>Électricité Martin</h3>
+          <p>Refonte complète d'un ancien site. Nouveau design mobile-first, SEO local renforcé, ajout de devis en ligne.</p>
+          <div class="portfolio-card__meta">
+            <span>Refonte</span>
+            <span>390 € HT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up fade-up--delay-2" data-sector="restauration">
+        <div class="portfolio-card__visual" style="background: linear-gradient(135deg, #B85C1A, #D46A3A);">
+          <span class="portfolio-card__visual-initials">TR</span>
+        </div>
+        <div class="portfolio-card__body">
+          <span class="portfolio-card__sector">Restauration</span>
+          <h3>Trattoria Roma</h3>
+          <p>Site restaurant avec menu en ligne, réservation de tables et galerie photos. Ambiance italienne authentique.</p>
+          <div class="portfolio-card__meta">
+            <span>Site vitrine</span>
+            <span>490 € HT</span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section class="testimonials">
+    <div class="container">
+      <div style="text-align:center" class="fade-up">
+        <span class="tag">Avis clients</span>
+        <h2>Ils nous font confiance</h2>
+      </div>
+      <div class="testimonials__grid">
+        <div class="testimonial fade-up fade-up--delay-1">
+          <div class="testimonial__stars">★★★★★</div>
+          <p class="testimonial__text">"Rodrigue et Viktor ont su cerner exactement ce dont j'avais besoin. En 2 semaines, j'avais un site pro que mes concurrents n'ont toujours pas."</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar" style="background:#7C5C3A">TM</div>
+            <div class="testimonial__info">
+              <strong>Thomas Mercier</strong>
+              <span>Plombier chauffagiste</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial fade-up fade-up--delay-2">
+          <div class="testimonial__stars">★★★★★</div>
+          <p class="testimonial__text">"Le tarif m'a convaincue de tenter, et le résultat m'a épatée. Mon site a doublé mes demandes de renseignement en un mois."</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar" style="background:#C0392B">AC</div>
+            <div class="testimonial__info">
+              <strong>Anaïs Colbert</strong>
+              <span>Boulangère artisanale</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial fade-up fade-up--delay-3">
+          <div class="testimonial__stars">★★★★★</div>
+          <p class="testimonial__text">"Très à l'écoute, réactifs et professionnels. La refonte de mon ancien site a été une vraie réussite. Je recommande sans hésiter."</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar" style="background:#5A3A7A">KV</div>
+            <div class="testimonial__info">
+              <strong>Karim Vasseur</strong>
+              <span>Électricien</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Votre projet, c'est le prochain.</h2>
+      <p>Discutons de votre site web autour d'un devis gratuit et sans engagement.</p>
+      <div class="cta-band__btns">
+        <a href="contact.html" class="btn btn--primary">Demander un devis →</a>
+        <a href="processus.html" class="btn btn--ghost">Notre processus</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo">Viro<span>gue</span></a>
+          <p>Création de sites web professionnels pour TPE, artisans et indépendants. Basés en France, disponibles partout.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="processus.html">Notre processus</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Prestations</h4>
+          <ul>
+            <li><a href="contact.html">Site vitrine</a></li>
+            <li><a href="contact.html">Boutique en ligne</a></li>
+            <li><a href="contact.html">Refonte de site</a></li>
+            <li><a href="contact.html">Devis gratuit</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2024 Virogue. Tous droits réservés.</span>
+        <span>Rodrigue &amp; Viktor — Micro-entreprise française</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

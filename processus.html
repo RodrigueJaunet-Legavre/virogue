@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notre processus — Virogue</title>
+  <meta name="description" content="De la demande à la livraison : découvrez comment Virogue travaille pour créer votre site en 2 à 3 semaines." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 720px;
+      margin: 64px auto 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-step {
+      display: flex;
+      gap: 32px;
+      padding-bottom: 56px;
+      position: relative;
+    }
+    .timeline-step:last-child {
+      padding-bottom: 0;
+    }
+    .timeline-step__num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-title);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-3);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      transition: var(--transition);
+    }
+    .timeline-step.active .timeline-step__num {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .timeline-step__body {
+      padding-top: 12px;
+    }
+    .timeline-step__timing {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .timeline-step__body h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .timeline-step__body p {
+      font-size: 0.93rem;
+      line-height: 1.7;
+    }
+    .timeline-step__body ul {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .timeline-step__body ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--text-2);
+    }
+    .timeline-step__body ul li::before {
+      content: '→';
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Garanties */
+    .garanties {
+      background: #fff;
+    }
+    .garanties__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .garantie-card {
+      text-align: center;
+      padding: 36px 28px;
+      border-radius: var(--radius);
+      background: var(--bg);
+      border: 1px solid var(--border);
+    }
+    .garantie-card__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: rgba(212,106,58,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .garantie-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+    .garantie-card p { font-size: 0.88rem; }
+
+    /* FAQ légère */
+    .faq-mini {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .faq-mini__item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq-mini__q {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .faq-mini__a {
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 640px) {
+      .garanties__grid { grid-template-columns: 1fr; }
+      .timeline::before { left: 22px; }
+      .timeline-step__num { width: 44px; height: 44px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">Viro<span>gue</span></a>
+        <div class="nav__links" id="navLinks">
+          <a href="index.html">Accueil</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="processus.html" class="active">Notre processus</a>
+          <a href="contact.html">Contact</a>
+          <a href="contact.html" class="btn btn--primary">Devis gratuit</a>
+        </div>
+        <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="nav__mobile" id="mobileMenu">
+        <a href="index.html">Accueil</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="processus.html">Notre processus</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="btn btn--primary">Devis gratuit →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero container fade-up">
+    <span class="tag">Comment ça fonctionne</span>
+    <h1>Simple, transparent, efficace.</h1>
+    <p>De votre première prise de contact à la mise en ligne de votre site, voici comment nous travaillons ensemble.</p>
+  </div>
+
+  <!-- TIMELINE -->
+  <section class="section--sm container">
+    <div class="timeline">
+
+      <div class="timeline-step active fade-up">
+        <div class="timeline-step__num">1</div>
+        <div class="timeline-step__body">
+          <span class="timeline-step__timing">Jour 0</span>
+          <h3>Prise de contact &amp; brief</h3>
+          <p>On commence par échanger sur votre activité, vos besoins et vos envies. Un appel de 20 minutes suffit pour cadrer le projet.</p>
+          <ul>
+            <li>Compréhension de votre métier et de vos clients</li>
+            <li>Définition des pages et fonctionnalités souhaitées</li>
+            <li>Recueil de vos éléments (logo, textes, photos)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-step fade-up fade-up--delay-1">
+        <div class="timeline-step__num">2</div>
+        <div class="timeline-step__body">
+          <span class="timeline-step__timing">Jour 2</span>
+          <h3>Proposition &amp; devis</h3>
+          <p>Sous 48h, vous recevez un devis détaillé avec le périmètre exact du projet, le tarif et le planning.</p>
+          <ul>
+            <li>Devis fixe, sans surprise</li>
+            <li>Délai de livraison garanti</li>
+            <li>Paiement en deux fois (50% à la commande, 50% à la livraison)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-step fade-up fade-up--delay-1">
+        <div class="timeline-step__num">3</div>
+        <div class="timeline-step__body">
+          <span class="timeline-step__timing">Jour 5</span>
+          <h3>Maquette &amp; design</h3>
+          <p>Nous créons une maquette visuelle de votre site pour valider la direction artistique avant de développer.</p>
+          <ul>
+            <li>Proposition de couleurs, typographies et mise en page</li>
+            <li>Jusqu'à 3 révisions incluses</li>
+            <li>Validation de votre côté avant de continuer</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-step fade-up fade-up--delay-2">
+        <div class="timeline-step__num">4</div>
+        <div class="timeline-step__body">
+          <span class="timeline-step__timing">Jour 10</span>
+          <h3>Développement &amp; intégration</h3>
+          <p>Le site prend vie. Nous intégrons vos contenus, optimisons la vitesse, la sécurité et le référencement naturel.</p>
+          <ul>
+            <li>Site rapide et mobile-first</li>
+            <li>Référencement local Google (SEO) inclus</li>
+            <li>Formulaire de contact, carte, réseaux sociaux</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-step fade-up fade-up--delay-3">
+        <div class="timeline-step__num">5</div>
+        <div class="timeline-step__body">
+          <span class="timeline-step__timing">Jour 14</span>
+          <h3>Livraison &amp; formation</h3>
+          <p>Votre site est en ligne ! On vous explique comment le mettre à jour vous-même et on reste disponibles après la livraison.</p>
+          <ul>
+            <li>Mise en ligne sur votre domaine</li>
+            <li>Formation à la gestion de contenu (30 min)</li>
+            <li>Support garanti pendant 30 jours</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GARANTIES -->
+  <section class="section garanties">
+    <div class="container">
+      <div style="text-align:center" class="fade-up">
+        <span class="tag">Nos engagements</span>
+        <h2>Ce qu'on vous garantit</h2>
+      </div>
+      <div class="garanties__grid">
+        <div class="garantie-card fade-up fade-up--delay-1">
+          <div class="garantie-card__icon">
+            <svg width="24" height="24" fill="none" stroke="var(--accent)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3>Délai respecté</h3>
+          <p>Votre site livré dans le délai annoncé au devis. Si on prend du retard, on vous rembourse 10% par semaine de retard.</p>
+        </div>
+        <div class="garantie-card fade-up fade-up--delay-2">
+          <div class="garantie-card__icon">
+            <svg width="24" height="24" fill="none" stroke="var(--accent)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          </div>
+          <h3>3 révisions incluses</h3>
+          <p>Vous pouvez demander jusqu'à 3 séries de modifications sur la maquette et le développement. Sans coût supplémentaire.</p>
+        </div>
+        <div class="garantie-card fade-up fade-up--delay-3">
+          <div class="garantie-card__icon">
+            <svg width="24" height="24" fill="none" stroke="var(--accent)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+          <h3>Support 30 jours</h3>
+          <p>Après la mise en ligne, on reste disponibles pendant 30 jours pour corriger tout bug ou ajustement de votre site.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section container">
+    <div style="text-align:center;margin-bottom:48px" class="fade-up">
+      <span class="tag">Questions fréquentes</span>
+      <h2>Ce que vous nous demandez souvent</h2>
+    </div>
+    <div class="faq-mini fade-up">
+      <div class="faq-mini__item">
+        <div class="faq-mini__q">Est-ce que je dois fournir des textes et des photos ?</div>
+        <div class="faq-mini__a">On s'adapte à ce que vous avez. Si vous n'avez pas de photos, on peut utiliser des banques d'images libres de droits. Pour les textes, on peut vous guider ou les rédiger pour vous (option à part).</div>
+      </div>
+      <div class="faq-mini__item">
+        <div class="faq-mini__q">Je n'y connais rien en informatique, est-ce un problème ?</div>
+        <div class="faq-mini__a">Pas du tout. On explique tout simplement, on évite le jargon, et on vous forme à la gestion de votre site à la livraison. Vous serez autonome en 30 minutes.</div>
+      </div>
+      <div class="faq-mini__item">
+        <div class="faq-mini__q">Le site sera-t-il visible sur mobile ?</div>
+        <div class="faq-mini__a">Oui, c'est une priorité. Tous nos sites sont "mobile-first" : ils s'affichent parfaitement sur smartphone, tablette et ordinateur.</div>
+      </div>
+      <div class="faq-mini__item">
+        <div class="faq-mini__q">Que se passe-t-il après les 30 jours de support ?</div>
+        <div class="faq-mini__a">On propose une maintenance mensuelle optionnelle. Sinon, vous gérez votre site en autonomie — on vous aura formé pour ça.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Prêt à démarrer votre projet ?</h2>
+      <p>Contactez-nous pour un devis gratuit. On vous répond sous 24h.</p>
+      <div class="cta-band__btns">
+        <a href="contact.html" class="btn btn--primary">Démarrer maintenant →</a>
+        <a href="portfolio.html" class="btn btn--ghost">Voir le portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo">Viro<span>gue</span></a>
+          <p>Création de sites web professionnels pour TPE, artisans et indépendants. Basés en France, disponibles partout.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="processus.html">Notre processus</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Prestations</h4>
+          <ul>
+            <li><a href="contact.html">Site vitrine</a></li>
+            <li><a href="contact.html">Boutique en ligne</a></li>
+            <li><a href="contact.html">Refonte de site</a></li>
+            <li><a href="contact.html">Devis gratuit</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2024 Virogue. Tous droits réservés.</span>
+        <span>Rodrigue &amp; Viktor — Micro-entreprise française</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
