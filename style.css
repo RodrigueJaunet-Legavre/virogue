@@ -292,6 +292,90 @@ p  { color: var(--text-2); }
   transform: translateY(-3px);
 }
 
+/* ── Section équipe ─────────────────────────── */
+.team-section { background: #fff; }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 880px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.team-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+.team-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+}
+.team-card__photo {
+  height: 280px;
+  overflow: hidden;
+}
+.team-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.team-card:hover .team-card__photo img {
+  transform: scale(1.02);
+}
+.team-card__body {
+  padding: 28px 32px 36px;
+}
+.team-card__name {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.team-card__role {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.team-card__bio {
+  color: var(--text-2);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* Animations slide gauche / droite */
+.slide-left {
+  opacity: 0;
+  transform: translateX(-56px) scale(0.97);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.slide-right {
+  opacity: 0;
+  transform: translateX(56px) scale(0.97);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 0.18s;
+}
+.slide-left.visible,
+.slide-right.visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
 /* =============================================
    RESPONSIVE
    ============================================= */
@@ -302,6 +386,13 @@ p  { color: var(--text-2); }
   .footer__brand {
     grid-column: 1 / -1;
   }
+}
+
+@media (max-width: 768px) {
+  .team-grid { grid-template-columns: 1fr; }
+  .team-card__photo { height: 240px; }
+  .slide-left  { transform: translateY(32px) scale(0.97); }
+  .slide-right { transform: translateY(32px) scale(0.97); transition-delay: 0s; }
 }
 
 @media (max-width: 640px) {

@@ -15,7 +15,7 @@ const observer = new IntersectionObserver(
   { threshold: 0.12 }
 )
 
-document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el))
+document.querySelectorAll('.fade-up, .slide-left, .slide-right').forEach((el) => observer.observe(el))
 
 // --- Hamburger menu ---
 const hamburger = document.getElementById('hamburger')
