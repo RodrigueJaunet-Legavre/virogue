@@ -3,9 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Notre équipe — Virogue</title>
-  <meta name="description" content="Découvrez Rodrigue et Viktor, le duo derrière Virogue." />
+  <title>Notre équipe — Rodrigue & Viktor, fondateurs de Virogue agence web</title>
+  <meta name="description" content="Rencontrez Rodrigue et Viktor, le duo derrière Virogue. Spécialistes création site web pour artisans et TPE, ils combinent design, développement et SEO." />
+  <meta name="keywords" content="équipe Virogue agence web, Rodrigue Viktor développeurs web, création site internet artisan, agence web française" />
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:site_name"   content="Virogue" />
+  <meta property="og:url"         content="https://virogue.fr/equipe.html" />
+  <meta property="og:title"       content="Notre équipe — Rodrigue & Viktor, fondateurs de Virogue agence web" />
+  <meta property="og:description" content="Rencontrez Rodrigue et Viktor, le duo passionné derrière Virogue. Design, développement et SEO au service des artisans et TPE français." />
+  <meta property="og:image"       content="https://virogue.fr/images/og-equipe.jpg" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Section équipe ── */
+    .team-section {
+      background: #fff;
+    }
+
+    .team-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .team-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Photo */
+    .team-member__avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      margin-bottom: 32px;
+      position: relative;
+      /* Double anneau : blanc + accent en dégradé */
+      outline: 4px solid #fff;
+      box-shadow:
+        0 0 0 6px rgba(212,106,58,0.2),
+        0 12px 40px rgba(0,0,0,0.12);
+      transition: box-shadow 0.4s ease;
+    }
+    .team-member:hover .team-member__avatar {
+      box-shadow:
+        0 0 0 6px rgba(212,106,58,0.55),
+        0 16px 48px rgba(0,0,0,0.16);
+    }
+    .team-member__avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .team-member:hover .team-member__avatar img {
+      transform: scale(1.06);
+    }
+
+    /* Texte */
+    .team-member__name {
+      font-family: var(--font-title);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .team-member__role {
+      display: block;
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .team-member__divider {
+      width: 32px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 0 auto 20px;
+      opacity: 0.35;
+    }
+    .team-member__bio {
+      color: var(--text-2);
+      font-size: 0.93rem;
+      line-height: 1.8;
+      max-width: 300px;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .team-list { grid-template-columns: 1fr; gap: 60px; }
+      .team-member__avatar { width: 150px; height: 150px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -45,30 +145,28 @@
   <!-- ÉQUIPE -->
   <section class="section team-section">
     <div class="container">
-      <div class="team-grid">
+      <div class="team-list">
 
-        <!-- Rodrigue — slide depuis la gauche -->
-        <div class="team-card slide-left">
-          <div class="team-card__photo" style="height: auto;">
-            <img src="rodrigue.jpg" alt="Rodrigue" style="width: 100%; height: auto;" />
+        <!-- Rodrigue -->
+        <div class="team-member slide-left">
+          <div class="team-member__avatar">
+            <img src="rodrigue.jpg" alt="Rodrigue, co-fondateur de Virogue — Design et développement web" />
           </div>
-          <div class="team-card__body">
-            <h3 class="team-card__name">Rodrigue</h3>
-            <span class="team-card__role">Design &amp; Développement</span>
-            <p class="team-card__bio">Passionné par le design et l'expérience utilisateur, je crée des sites qui allient esthétique et performance pour faire rayonner votre activité.</p>
-          </div>
+          <h3 class="team-member__name">Rodrigue</h3>
+          <span class="team-member__role">Design &amp; Développement</span>
+          <div class="team-member__divider"></div>
+          <p class="team-member__bio">Passionné par le design et l'expérience utilisateur, je crée des sites qui allient esthétique et performance pour faire rayonner votre activité.</p>
         </div>
 
-        <!-- Viktor — slide depuis la droite -->
-        <div class="team-card slide-right">
-          <div class="team-card__photo" style="height: auto;">
-            <img src="viktor.jpg" alt="Viktor" style="width: 100%; height: auto;" />
+        <!-- Viktor -->
+        <div class="team-member slide-right">
+          <div class="team-member__avatar">
+            <img src="viktor.jpg" alt="Viktor, co-fondateur de Virogue — Développement web et SEO" />
           </div>
-          <div class="team-card__body">
-            <h3 class="team-card__name">Viktor</h3>
-            <span class="team-card__role">Développement &amp; SEO</span>
-            <p class="team-card__bio">Expert en développement web et référencement naturel, j'optimise chaque site pour qu'il soit rapide, fiable et visible sur Google.</p>
-          </div>
+          <h3 class="team-member__name">Viktor</h3>
+          <span class="team-member__role">Développement &amp; SEO</span>
+          <div class="team-member__divider"></div>
+          <p class="team-member__bio">Expert en développement web et référencement naturel, j'optimise chaque site pour qu'il soit rapide, fiable et visible sur Google.</p>
         </div>
 
       </div>
