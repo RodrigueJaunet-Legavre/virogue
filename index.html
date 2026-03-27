@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Création de site web pas cher pour artisans et TPE | Virogue</title>
-  <meta name="description" content="Virogue crée votre site internet professionnel à partir de 490 €. Agence web spécialisée artisans, TPE et indépendants. Devis gratuit, livraison en 2-3 semaines." />
+  <meta name="description" content="Virogue crée votre site internet professionnel Agence web spécialisée artisans, TPE et indépendants. Devis gratuit, livraison en 1-2 semaines." />
   <meta name="keywords" content="création site web pas cher, site internet artisan, Virogue agence web, site web TPE, création site internet indépendant, agence web française" />
   <!-- Open Graph -->
   <meta property="og:type"        content="website" />
   <meta property="og:site_name"   content="Virogue" />
   <meta property="og:url"         content="https://virogue.fr/" />
   <meta property="og:title"       content="Création de site web pas cher pour artisans et TPE | Virogue" />
-  <meta property="og:description" content="Virogue crée votre site internet professionnel à partir de 490 €. Spécialisé artisans, TPE et indépendants. Devis gratuit, livraison en 2-3 semaines." />
+  <meta property="og:description" content="Virogue crée votre site internet professionnel Spécialisé artisans, TPE et indépendants. Devis gratuit, livraison en 1-2 semaines." />
   <meta property="og:image"       content="https://virogue.fr/images/og-home.jpg" />
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -92,6 +92,45 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+    }
+    /* Slideshow */
+    .hero__slides {
+      position: relative;
+      height: 260px;
+      overflow: hidden;
+    }
+    .hero__slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .hero__slide.active { opacity: 1; }
+    .hero__slide-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 7px;
+      z-index: 2;
+    }
+    .hero__slide-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      transition: background 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+    }
+    .hero__slide-dot.active {
+      background: var(--accent);
+      transform: scale(1.3);
     }
     .hero__mockup-hero-block {
       background: linear-gradient(135deg, #D46A3A18, #D46A3A08);
@@ -202,6 +241,145 @@
       font-family: var(--font-title);
     }
 
+    /* ---- MAINTENANCE ---- */
+    .maintenance {
+      background: var(--bg);
+    }
+    .maintenance__intro {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 56px;
+    }
+    .maintenance__features {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+    .maint-feature {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .maint-feature__icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(212,106,58,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+    }
+    .maint-feature__icon svg { color: var(--accent); }
+    .maint-feature h4 {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .maintenance__plans {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 760px;
+      margin: 0 auto 40px;
+    }
+    .maint-plan {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .maint-plan--premium {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent), var(--shadow-lg);
+    }
+    .maint-plan__badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .maint-plan__name {
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .maint-plan__price {
+      font-size: 2.4rem;
+      font-family: var(--font-title);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .maint-plan__price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-3);
+      font-family: var(--font-body);
+    }
+    .maint-plan__tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(212,106,58,0.1);
+      border: 1px solid rgba(212,106,58,0.25);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin: 8px 0 12px;
+    }
+    .maint-plan__sub {
+      font-size: 0.82rem;
+      color: var(--text-3);
+      margin-bottom: 28px;
+    }
+    .maint-plan__list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .maint-plan__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text-2);
+    }
+    .maint-plan__list li::before {
+      content: '→';
+      color: var(--accent);
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+    .maintenance__cta {
+      text-align: center;
+    }
+    @media (max-width: 900px) {
+      .maintenance__features { grid-template-columns: repeat(3, 1fr); }
+      .maintenance__plans { grid-template-columns: 1fr; max-width: 420px; }
+    }
+    @media (max-width: 600px) {
+      .maintenance__features { grid-template-columns: 1fr 1fr; }
+    }
+
     /* ---- POURQUOI VIROGUE ---- */
     .why {
       background: #fff;
@@ -241,18 +419,30 @@
     }
     .why__item-text p { font-size: 0.9rem; }
     .why__visual {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .why__visual-img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      display: block;
+    }
+    .why__visual-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 12px;
     }
     .why__visual-card {
       background: var(--bg);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 20px 24px;
       border: 1px solid var(--border);
     }
-    .why__visual-card:nth-child(2) { margin-top: 32px; }
-    .why__visual-card:nth-child(3) { margin-top: -16px; }
     .why__visual-num {
       font-family: var(--font-title);
       font-size: 2rem;
@@ -301,7 +491,7 @@
         <a href="index.html" class="nav__logo">Viro<span>gue</span></a>
         <div class="nav__links" id="navLinks">
           <a href="index.html" class="active">Accueil</a>
-          <a href="portfolio.html">Portfolio</a>
+          <a href="portfolio.html">Nos créations</a>
           <a href="processus.html">Notre processus</a>
           <a href="equipe.html">Équipe</a>
           <a href="contact.html" class="btn btn--primary">Devis gratuit</a>
@@ -312,7 +502,7 @@
       </div>
       <div class="nav__mobile" id="mobileMenu">
         <a href="index.html">Accueil</a>
-        <a href="portfolio.html">Portfolio</a>
+        <a href="portfolio.html">Nos créations</a>
         <a href="processus.html">Notre processus</a>
         <a href="equipe.html">Équipe</a>
         <a href="contact.html" class="btn btn--primary">Devis gratuit →</a>
@@ -328,10 +518,10 @@
           <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
           Micro-entreprise française
         </div>
-        <h1>Votre site web pro,<br>sans vous <em>ruiner.</em></h1>
-        <p class="hero__sub">Virogue crée des sites professionnels pour les TPE, artisans et indépendants — à des tarifs bien inférieurs aux agences, avec des délais rapides et un accompagnement humain.</p>
+        <h1>La modernité digitale,<br><em>accessible à tous.</em></h1>
+        <p class="hero__sub">Virogue crée des sites web professionnels pour entreprises, commerçants et artisans — à des tarifs jusqu'à 3× moins chers qu'une agence.</p>
         <div class="hero__cta">
-          <a href="portfolio.html" class="btn btn--ghost">Voir le portfolio</a>
+          <a href="portfolio.html" class="btn btn--ghost">Voir nos créations</a>
           <a href="contact.html" class="btn btn--primary">Obtenir un devis gratuit →</a>
         </div>
       </div>
@@ -343,28 +533,21 @@
             <div class="hero__dot"></div>
             <div class="hero__browser-url"></div>
           </div>
-          <div class="hero__mockup">
-            <div class="hero__mockup-hero-block">
-              <div class="hero__mockup-avatar"></div>
-              <div class="hero__mockup-lines">
-                <div class="hero__mockup-line hero__mockup-line--accent"></div>
-                <div class="hero__mockup-line" style="width:80%"></div>
-                <div class="hero__mockup-line" style="width:50%"></div>
-              </div>
+          <div class="hero__mockup" style="padding:0;min-height:auto;position:relative;">
+            <div class="hero__slides">
+              <img class="hero__slide active" src="images/fairplay.jpg"         alt="FairPlay — réalisé par Virogue" />
+              <img class="hero__slide"        src="images/mie-doree-preview.jpg" alt="La Mie Dorée — réalisé par Virogue" />
+              <img class="hero__slide"        src="images/ombreve-preview.jpg"   alt="Ombrève — réalisé par Virogue" />
             </div>
-            <div class="hero__mockup-grid">
-              <div class="hero__mockup-card"></div>
-              <div class="hero__mockup-card" style="background:rgba(212,106,58,0.08)"></div>
-              <div class="hero__mockup-card"></div>
-            </div>
-            <div style="display:flex;gap:8px">
-              <div class="hero__mockup-line" style="height:12px;width:40%;background:var(--accent);border-radius:6px"></div>
-              <div class="hero__mockup-line" style="height:12px;width:30%;border-radius:6px"></div>
+            <div class="hero__slide-dots">
+              <span class="hero__slide-dot active"></span>
+              <span class="hero__slide-dot"></span>
+              <span class="hero__slide-dot"></span>
             </div>
           </div>
         </div>
         <div class="hero__badge">
-          <span>2–3 sem.</span><br>délai de livraison moyen
+          <span>1–2 sem.</span><br>délai de livraison moyen
         </div>
       </div>
     </div>
@@ -375,11 +558,11 @@
     <div class="container">
       <div class="stats__grid">
         <div class="stats__item fade-up">
-          <div class="stats__num">−60%</div>
+          <div class="stats__num">jusqu'à −50%</div>
           <div class="stats__label">de coût vs une agence traditionnelle</div>
         </div>
         <div class="stats__item fade-up fade-up--delay-1">
-          <div class="stats__num">2–3</div>
+          <div class="stats__num">1–2</div>
           <div class="stats__label">semaines de la commande à la livraison</div>
         </div>
         <div class="stats__item fade-up fade-up--delay-2">
@@ -404,7 +587,6 @@
         </div>
         <h3>Site vitrine</h3>
         <p>Présentez votre activité, vos services et vos coordonnées. Parfait pour un artisan, un professionnel libéral ou un commerce local.</p>
-        <div class="price">À partir de <strong>490 €</strong> HT</div>
       </div>
       <div class="card service-card fade-up fade-up--delay-2">
         <div class="service-card__icon">
@@ -412,7 +594,6 @@
         </div>
         <h3>Boutique en ligne</h3>
         <p>Vendez vos produits ou services directement sur internet. Paiement sécurisé, gestion simple, résultat professionnel.</p>
-        <div class="price">À partir de <strong>890 €</strong> HT</div>
       </div>
       <div class="card service-card fade-up fade-up--delay-3">
         <div class="service-card__icon">
@@ -420,7 +601,81 @@
         </div>
         <h3>Refonte de site</h3>
         <p>Votre site actuel est vieillissant ? Nous le modernisons pour qu'il soit rapide, beau et adapté aux mobiles.</p>
-        <div class="price">À partir de <strong>390 €</strong> HT</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAINTENANCE -->
+  <section class="section maintenance">
+    <div class="container">
+      <div class="maintenance__intro fade-up">
+        <span class="tag">On reste à vos côtés</span>
+        <h2>Bien plus qu'un site web</h2>
+        <p style="margin-top:14px">Après la livraison, nous restons disponibles pour faire vivre votre site. Maintenance, mises à jour, SEO, modifications — tout est géré pour vous.</p>
+      </div>
+
+      <div class="maintenance__features">
+        <div class="maint-feature fade-up fade-up--delay-1">
+          <div class="maint-feature__icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h4>Maintenance technique</h4>
+        </div>
+        <div class="maint-feature fade-up fade-up--delay-1">
+          <div class="maint-feature__icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <h4>Référencement SEO</h4>
+        </div>
+        <div class="maint-feature fade-up fade-up--delay-2">
+          <div class="maint-feature__icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          </div>
+          <h4>Modifications contenu</h4>
+        </div>
+        <div class="maint-feature fade-up fade-up--delay-2">
+          <div class="maint-feature__icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h4>Support prioritaire</h4>
+        </div>
+        <div class="maint-feature fade-up fade-up--delay-3">
+          <div class="maint-feature__icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h4>Rapport mensuel</h4>
+        </div>
+      </div>
+
+      <div class="maintenance__plans">
+        <div class="maint-plan fade-up fade-up--delay-1">
+          <div class="maint-plan__name">Essentiel</div>
+          <span class="maint-plan__tag">Abonnement mensuel</span>
+          <p class="maint-plan__sub">Pour rester serein sans s'en occuper</p>
+          <ul class="maint-plan__list">
+            <li>Maintenance technique & mises à jour</li>
+            <li>1 modification de contenu par mois</li>
+            <li>Support par email sous 48h</li>
+            <li>Hébergement sécurisé inclus</li>
+          </ul>
+        </div>
+        <div class="maint-plan maint-plan--premium fade-up fade-up--delay-2">
+          <div class="maint-plan__badge">Recommandé</div>
+          <div class="maint-plan__name">Premium</div>
+          <span class="maint-plan__tag">Abonnement mensuel</span>
+          <p class="maint-plan__sub">Pour les pros qui veulent performer</p>
+          <ul class="maint-plan__list">
+            <li>Maintenance technique & mises à jour</li>
+            <li>Modifications illimitées</li>
+            <li>Référencement naturel (SEO) continu</li>
+            <li>Rapport mensuel de performance</li>
+            <li>Support prioritaire sous 24h</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="maintenance__cta fade-up">
+        <a href="contact.html" class="btn btn--primary">Nous contacter →</a>
       </div>
     </div>
   </section>
@@ -448,7 +703,7 @@
               </div>
               <div class="why__item-text">
                 <h4>Livraison rapide</h4>
-                <p>En 2 à 3 semaines, votre site est en ligne. Pas de mois d'attente inutiles.</p>
+                <p>En 1 à 2 semaines, votre site est en ligne. Pas de mois d'attente inutiles.</p>
               </div>
             </div>
             <div class="why__item fade-up fade-up--delay-3">
@@ -472,22 +727,9 @@
           </div>
         </div>
         <div class="why__visual">
-          <div class="why__visual-card fade-up fade-up--delay-1">
-            <div class="why__visual-num">+12</div>
-            <div class="why__visual-label">projets livrés en 2024</div>
-          </div>
-          <div class="why__visual-card fade-up fade-up--delay-2">
-            <div class="why__visual-num">4.9★</div>
-            <div class="why__visual-label">note moyenne clients</div>
-          </div>
-          <div class="why__visual-card fade-up fade-up--delay-3">
-            <div class="why__visual-num">24h</div>
-            <div class="why__visual-label">délai de réponse garanti</div>
-          </div>
-          <div class="why__visual-card fade-up fade-up--delay-4">
-            <div class="why__visual-num">3</div>
-            <div class="why__visual-label">révisions incluses</div>
-          </div>
+          <img class="why__visual-img fade-in"
+               src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+               alt="Rodrigue et Viktor travaillant sur un site web — Virogue agence web" />
         </div>
       </div>
     </div>
@@ -518,7 +760,7 @@
           <h4>Navigation</h4>
           <ul>
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="portfolio.html">Nos créations</a></li>
             <li><a href="processus.html">Notre processus</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
@@ -541,5 +783,24 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Slideshow hero
+    const slides = document.querySelectorAll('.hero__slide');
+    const dots   = document.querySelectorAll('.hero__slide-dot');
+    let current  = 0;
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = index;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetTimer(); }));
+
+    let timer = setInterval(() => goTo((current + 1) % slides.length), 2000);
+    function resetTimer() { clearInterval(timer); timer = setInterval(() => goTo((current + 1) % slides.length), 2000); }
+  </script>
 </body>
 </html>
