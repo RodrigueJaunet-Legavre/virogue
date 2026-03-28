@@ -469,13 +469,16 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; padding: 64px 0 48px; }
-      .hero__visual { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 64px 0 48px; gap: 40px; }
+      .hero__visual { position: relative; }
+      .hero__badge { display: none; }
+      .hero__slides { height: 200px; }
       .services__grid { grid-template-columns: 1fr; }
       .why__grid { grid-template-columns: 1fr; }
       .why__visual { display: none; }
     }
     @media (max-width: 640px) {
+      .hero__slides { height: 180px; }
       .stats__grid { grid-template-columns: 1fr; gap: 32px; }
       .stats__item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 32px; }
       .stats__item:last-child { border-bottom: none; padding-bottom: 0; }
@@ -803,6 +806,10 @@
 
     let timer = setInterval(() => goTo((current + 1) % slides.length), 2000);
     function resetTimer() { clearInterval(timer); timer = setInterval(() => goTo((current + 1) % slides.length), 2000); }
+
+    // Tap pour avancer sur mobile
+    const slidesContainer = document.querySelector('.hero__slides');
+    slidesContainer.addEventListener('click', () => { goTo((current + 1) % slides.length); resetTimer(); });
   </script>
 </body>
 </html>
