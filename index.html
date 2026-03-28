@@ -807,9 +807,30 @@
     let timer = setInterval(() => goTo((current + 1) % slides.length), 2000);
     function resetTimer() { clearInterval(timer); timer = setInterval(() => goTo((current + 1) % slides.length), 2000); }
 
-    // Tap pour avancer sur mobile
+    // Swipe tactile sur mobile
     const slidesContainer = document.querySelector('.hero__slides');
-    slidesContainer.addEventListener('click', () => { goTo((current + 1) % slides.length); resetTimer(); });
+    let touchStartX = 0;
+    let touchDeltaX = 0;
+
+    slidesContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchDeltaX = 0;
+    }, { passive: true });
+
+    slidesContainer.addEventListener('touchmove', (e) => {
+      touchDeltaX = e.touches[0].clientX - touchStartX;
+    }, { passive: true });
+
+    slidesContainer.addEventListener('touchend', () => {
+      if (Math.abs(touchDeltaX) > 40) {
+        goTo(touchDeltaX < 0
+          ? (current + 1) % slides.length
+          : (current - 1 + slides.length) % slides.length
+        );
+        resetTimer();
+      }
+      touchDeltaX = 0;
+    });
   </script>
 </body>
 </html>
