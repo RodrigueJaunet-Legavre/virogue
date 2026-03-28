@@ -250,6 +250,7 @@
       <button class="filter-btn active" data-filter="all">Tous</button>
       <button class="filter-btn" data-filter="app-web">Application Web</button>
       <button class="filter-btn" data-filter="commerce">Commerce</button>
+      <button class="filter-btn" data-filter="restauration">Restauration</button>
     </div>
 
     <!-- Grille -->
@@ -290,6 +291,25 @@
           <div class="portfolio-card__meta">
             <span>Site vitrine</span>
             <a href="https://la-mie-doree.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="font-size:0.78rem;padding:6px 14px;">Voir le site →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up fade-up--delay-2" data-sector="restauration">
+        <div class="portfolio-card__visual" style="padding:0;">
+          <img class="slide active" src="images/le-zinc-et-le-pain.jpg" alt="Le Zinc et le Pain" />
+          <img class="slide" src="images/le-zinc-et-le-pain1.jpg" alt="Le Zinc et le Pain" />
+          <img class="slide" src="images/le-zinc-et-le-pain2.jpg" alt="Le Zinc et le Pain" />
+          <img class="slide" src="images/le-zinc-et-le-pain3.jpg" alt="Le Zinc et le Pain" />
+          <a href="https://le-zinc-et-le-pain.vercel.app" target="_blank" rel="noopener noreferrer" class="portfolio-card__visual-link" aria-label="Voir Le Zinc et le Pain"></a>
+        </div>
+        <div class="portfolio-card__body">
+          <span class="portfolio-card__sector">Restauration</span>
+          <h3>Le Zinc et le Pain</h3>
+          <p>Site vitrine pour un restaurant-boulangerie parisien. Présentation de la carte, ambiance et informations pratiques.</p>
+          <div class="portfolio-card__meta">
+            <span>Site vitrine</span>
+            <a href="https://le-zinc-et-le-pain.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="font-size:0.78rem;padding:6px 14px;">Voir le site →</a>
           </div>
         </div>
       </div>
@@ -421,7 +441,7 @@
       }
 
       card.addEventListener('mouseenter', () => {
-        timer = setInterval(() => showSlide(current + 1), 1000);
+        timer = setInterval(() => showSlide(current + 1), 800);
       });
 
       card.addEventListener('mouseleave', () => {
