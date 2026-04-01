@@ -122,6 +122,9 @@ p  { color: var(--text-2); }
   height: 68px;
 }
 .nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-title);
   font-size: 1.5rem;
   font-weight: 700;
