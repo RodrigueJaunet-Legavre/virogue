@@ -124,14 +124,14 @@ p  { color: var(--text-2); }
 .nav__logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: var(--font-title);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text);
+  color: #18180f;
   letter-spacing: -0.01em;
 }
-.nav__logo span { color: var(--accent); }
+.nav__logo span { color: #c0521a; }
 
 .nav__links {
   display: flex;
